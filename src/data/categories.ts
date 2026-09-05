@@ -71,6 +71,13 @@ export const categories: Category[] = [
     icon: 'Luggage',
   },
   {
+    slug: 'housewife-escorts',
+    name: 'Housewife Escorts',
+    shortDescription: 'Mature, experienced call girls offering a relaxed experience.',
+    description: 'Our housewife escorts are mature, experienced call girls who offer a more relaxed and genuine escort service experience. Ideal for clients seeking meaningful conversation and connection in a comfortable setting.',
+    icon: 'User',
+  },
+  {
     slug: 'premium-escorts',
     name: 'Premium Escorts',
     shortDescription: 'The finest all-round call girls for any occasion.',
@@ -79,6 +86,16 @@ export const categories: Category[] = [
   },
 ];
 
+const categoryAliases: Record<string, string> = {
+  'russian-escorts': 'russian-call-girls',
+  'vip-escorts': 'vip-call-girls',
+  'independent-escorts': 'independent-girls',
+  'air-hostess-escorts': 'air-hostess',
+  'vip-girls': 'vip-call-girls',
+};
+
 export function getCategory(slug: string): Category | undefined {
-  return categories.find((c) => c.slug === slug);
+  const resolvedSlug = categoryAliases[slug] || slug;
+  return categories.find((c) => c.slug === resolvedSlug || c.slug === slug);
 }
+

@@ -120,18 +120,57 @@ export default function Footer() {
         </div>
 
         {/* Locations strip */}
-        <div className="border-t border-charcoal-700 pt-8 mb-8">
-          <h4 className="font-sans text-xs tracking-ultra uppercase text-gold-500 mb-4">Our Locations</h4>
-          <div className="flex flex-wrap gap-x-4 gap-y-2">
-            {locations.map((loc) => (
-              <Link
-                key={loc.slug}
-                to={`/locations/${loc.slug}`}
-                className="text-xs text-charcoal-500 hover:text-gold-500 transition-colors"
-              >
-                Escorts in {loc.name}
-              </Link>
-            ))}
+        <div className="border-t border-charcoal-700 pt-8 mb-8 space-y-6">
+          <div className="flex items-center justify-between">
+            <h4 className="font-sans text-xs tracking-ultra uppercase text-gold-500">Service Locations Directory</h4>
+            <Link to="/locations" className="text-xs text-gold-400 hover:text-gold-300 underline underline-offset-4">
+              View All 100+ Locations &rarr;
+            </Link>
+          </div>
+
+          <div>
+            <p className="text-[11px] uppercase tracking-wider text-charcoal-400 font-semibold mb-2">Central Master Hubs</p>
+            <div className="flex flex-wrap gap-x-4 gap-y-1.5">
+              {locations.filter((l) => l.isHub).map((loc) => (
+                <Link
+                  key={loc.slug}
+                  to={`/locations/${loc.slug}`}
+                  className="text-xs text-gold-400/90 hover:text-gold-300 font-medium transition-colors"
+                >
+                  {loc.name} Escorts
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <p className="text-[11px] uppercase tracking-wider text-charcoal-400 font-semibold mb-2">Prime Gurgaon Corridors &amp; Sectors</p>
+            <div className="flex flex-wrap gap-x-4 gap-y-1.5">
+              {locations.filter((l) => l.region === 'Gurgaon' && !l.isHub).map((loc) => (
+                <Link
+                  key={loc.slug}
+                  to={`/locations/${loc.slug}`}
+                  className="text-xs text-charcoal-500 hover:text-gold-500 transition-colors"
+                >
+                  Escorts in {loc.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <p className="text-[11px] uppercase tracking-wider text-charcoal-400 font-semibold mb-2">Delhi NCR &amp; Regional Localities</p>
+            <div className="flex flex-wrap gap-x-4 gap-y-1.5">
+              {locations.filter((l) => l.region !== 'Gurgaon' && !l.isHub).map((loc) => (
+                <Link
+                  key={loc.slug}
+                  to={`/locations/${loc.slug}`}
+                  className="text-xs text-charcoal-500 hover:text-gold-500 transition-colors"
+                >
+                  Escorts in {loc.name}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
 

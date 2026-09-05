@@ -24,19 +24,22 @@ function LegalPage({ title, description, slug, content }: LegalPageProps) {
 
       <Breadcrumb items={[{ name: 'Home', path: '/' }, { name: title }]} />
 
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 bg-white text-gray-800">
         <div className="container-luxury max-w-4xl">
-          <div className="text-center mb-16">
-            <h1 className="section-title mb-6">{title}</h1>
-            <div className="gold-divider" />
+          <div className="text-center mb-12">
+            <span className="inline-block px-4 py-1.5 border border-gold-500/30 rounded-full text-gold-600 text-xs font-semibold tracking-wider uppercase mb-4 bg-gold-50">
+              Official Documentation
+            </span>
+            <h1 className="text-3xl md:text-5xl font-bold text-[#1a1a2e] font-serif mb-4">{title}</h1>
+            <div className="gold-divider mx-auto" />
           </div>
 
-          <div className="prose-luxury">
+          <div className="prose-luxury bg-[#faf6f2] p-8 md:p-12 rounded-3xl border border-gold-200/60 shadow-sm space-y-8">
             {content.map((section, i) => (
               <div key={i}>
-                <h2>{section.heading}</h2>
+                <h2 className="text-2xl font-bold text-[#1a1a2e] font-serif mb-3">{section.heading}</h2>
                 {section.paragraphs.map((para, j) => (
-                  <p key={j}>{para}</p>
+                  <p key={j} className="text-gray-700 text-base leading-relaxed mb-4">{para}</p>
                 ))}
               </div>
             ))}

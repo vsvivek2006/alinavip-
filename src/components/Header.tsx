@@ -57,14 +57,20 @@ export default function Header() {
             ))}
           </nav>
 
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-5">
             <a
               href={`tel:${siteConfig.phone}`}
-              className="flex items-center gap-2 text-sm text-charcoal-200 hover:text-gold-500 transition-colors"
+              className="flex items-center gap-2 text-sm text-charcoal-200 hover:text-gold-400 transition-colors font-medium"
             >
-              <Phone size={16} className="text-gold-500" />
+              <Phone size={15} className="text-gold-400" />
               <span className="tracking-wider">{siteConfig.phoneDisplay}</span>
             </a>
+            <Link
+              to="/contact"
+              className="px-4 py-2 bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-neutral-950 font-bold text-xs uppercase tracking-wider rounded-sm shadow-md transition-all hover:shadow-gold-500/20"
+            >
+              Book VIP
+            </Link>
           </div>
 
           <button
@@ -83,7 +89,7 @@ export default function Header() {
           mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >
-        <div className="flex flex-col items-center justify-center h-full gap-6 pt-20">
+        <div className="flex flex-col items-center justify-center h-full gap-5 pt-20 px-6 text-center">
           {navLinks.map((link) => (
             <Link
               key={link.path}
@@ -95,13 +101,32 @@ export default function Header() {
               {link.name}
             </Link>
           ))}
-          <a
-            href={`tel:${siteConfig.phone}`}
-            className="flex items-center gap-2 text-gold-500 mt-6 font-sans tracking-wider"
+          <Link
+            to="/faq"
+            className={`font-serif text-2xl tracking-wider transition-colors ${
+              location.pathname === '/faq' ? 'text-gold-500' : 'text-white hover:text-gold-500'
+            }`}
           >
-            <Phone size={18} />
-            {siteConfig.phoneDisplay}
-          </a>
+            FAQ
+          </Link>
+
+          <div className="flex flex-col gap-3 w-full max-w-xs mt-4">
+            <a
+              href={`tel:${siteConfig.phone}`}
+              className="flex items-center justify-center gap-2 bg-gradient-to-r from-gold-500 to-gold-600 text-neutral-950 py-3 rounded-xl font-bold tracking-wider text-sm shadow-lg"
+            >
+              <Phone size={16} />
+              {siteConfig.phoneDisplay}
+            </a>
+            <a
+              href={`https://wa.me/${siteConfig.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 bg-[#25D366] text-white py-3 rounded-xl font-bold tracking-wider text-sm shadow-lg"
+            >
+              WhatsApp
+            </a>
+          </div>
         </div>
       </div>
     </>
