@@ -8,7 +8,7 @@ import { siteConfig } from '@/data/siteConfig';
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
-  weight: ['300', '400', '600', '700'],
+  weight: ['400', '600'],
   variable: '--font-cormorant',
   display: 'swap',
 });

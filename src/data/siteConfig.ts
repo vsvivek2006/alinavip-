@@ -9,6 +9,20 @@ export const siteConfig = {
   domain: 'escort.alinavip.com',
   tagline: 'Premium Luxury Escort Service',
   description: 'ALINA VIP offers premium luxury escort services in Gurgaon with verified profiles, discreet service, and elite call girls for discerning gentlemen.',
+  keywords: [
+    'escort service in gurgaon',
+    'escorts service in gurgaon',
+    'escort service in gurugram',
+    'escorts service in gurugram',
+    'escort service in gurugaon',
+    'escorts service in gurugaon',
+    'gurgaon escort service',
+    'gurugram escort service',
+    'vip escort service in gurgaon',
+    'call girls in gurgaon',
+    'russian escorts gurgaon',
+    'independent escorts in gurgaon',
+  ],
   socialLinks: [
     { name: 'Instagram', url: 'https://instagram.com/alinavip', icon: 'Instagram' },
     { name: 'Twitter', url: 'https://twitter.com/gurgaonescort', icon: 'Twitter' },
@@ -82,3 +96,10 @@ export const generalFaqs = [
     answer: 'Always book through an established agency like ALINA VIP that provides authentic, untouched profile photographs and explicit outcall terms. Avoid operators demanding untraceable upfront digital transfers before meeting. With ALINA VIP, our companions are verified in person, guaranteeing that the companion who arrives matches the profile you selected.',
   },
 ];
+
+export function getAlternateLanguages(path: string = '') {
+  const cleanPath = path ? (path.startsWith('/') ? path : `/${path}`) : '';
+  return {
+    'en': `https://escort.alinavip.com${cleanPath}`,
+  };
+}

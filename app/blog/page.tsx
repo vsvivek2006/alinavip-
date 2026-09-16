@@ -8,19 +8,21 @@ import CTASection from '@/components/CTASection';
 import BlogFilter from '@/components/BlogFilter';
 import NewsletterForm from '@/components/NewsletterForm';
 import { blogPosts, blogCategories } from '@/data/blogs';
+import { siteConfig, getAlternateLanguages } from '@/data/siteConfig';
 
 export const metadata: Metadata = {
-  title: 'Escort Service Blog | Call Girls Tips & Lifestyle | ALINA VIP',
+  title: 'Gurgaon Escorts & Call Girls Blog | ALINA VIP India',
   description:
-    'Read our blog for insights on escort service in Gurgaon, VIP call girls, Russian escorts, nightlife, dating tips, and luxury lifestyle. Expert guides and articles for discerning gentlemen.',
+    'Read the official ALINA VIP India blog for insights on VIP call girls, Russian escorts in Gurgaon, five-star hotel guides, escort girls etiquette, and luxury nightlife.',
   alternates: {
-    canonical: 'https://escort.alinavip.com/blog',
+    canonical: `${siteConfig.url}/blog`,
+    languages: getAlternateLanguages('/blog'),
   },
   openGraph: {
-    title: 'Escort Service Blog | Call Girls Tips & Lifestyle | ALINA VIP',
+    title: 'Gurgaon Escorts & Call Girls Blog | ALINA VIP India',
     description:
-      'Read our blog for insights on escort service in Gurgaon, VIP call girls, Russian escorts, nightlife, dating tips, and luxury lifestyle. Expert guides and articles for discerning gentlemen.',
-    url: 'https://escort.alinavip.com/blog',
+      'Read the official ALINA VIP India blog for insights on VIP call girls, Russian escorts in Gurgaon, five-star hotel guides, escort girls etiquette, and luxury nightlife.',
+    url: `${siteConfig.url}/blog`,
     type: 'website',
   },
 };
@@ -42,7 +44,7 @@ export default function BlogPage() {
       <Breadcrumb items={[{ name: 'Home', path: '/' }, { name: 'Blog' }]} />
 
       {/* Hero Section */}
-      <section className="relative py-20 md:py-28 bg-gradient-to-br from-[#0a0a1a] via-[#1a1a2e] to-[#2d1b0e] overflow-hidden">
+      <section className="relative py-20 md:py-28 bg-gradient-to-br from-[#050508] via-[#0C0B14] to-[#141022] overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:24px_24px]" />
         </div>
@@ -51,10 +53,10 @@ export default function BlogPage() {
             ★ Insights &amp; Resources
           </span>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 font-serif tracking-wide">
-            Escort Service <span className="text-gradient-gold">Blog</span>
+            Gurgaon Call Girls &amp; <span className="text-gradient-gold">Escort Girls Journal</span>
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Expert insights on escort service in Gurgaon, etiquette guidelines, Russian models, nightlife, dating tips, and luxury hospitality.
+            Authoritative insights on luxury escort services in Gurgaon, five-star hotel outcall etiquette, nightlife recommendations, and verified call girls booking advice from ALINA VIP India.
           </p>
           <div className="gold-divider mx-auto mt-8" />
         </div>
@@ -65,7 +67,7 @@ export default function BlogPage() {
         <div className="container-luxury">
           <div className="text-center mb-12">
             <p className="section-subtitle text-gold-600">Our Blog</p>
-            <h2 className="section-title mb-4 text-[#1a1a2e]">
+            <h2 className="section-title mb-4 text-[#0F172A]">
               Insights on <span className="text-gradient-gold">VIP Escorts &amp; Luxury Lifestyle</span>
             </h2>
             <div className="gold-divider mx-auto" />
@@ -96,7 +98,7 @@ export default function BlogPage() {
                 <span className="inline-block bg-gold-600 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-4">
                   ★ Featured Article
                 </span>
-                <h3 className="text-2xl md:text-3xl font-bold text-[#1a1a2e] mb-3 font-serif">
+                <h3 className="text-2xl md:text-3xl font-bold text-[#0F172A] mb-3 font-serif">
                   Best Escort Service in Gurgaon: A Complete Guide
                 </h3>
                 <p className="text-gray-700 mb-6 leading-relaxed">
@@ -122,6 +124,7 @@ export default function BlogPage() {
                 <Image
                   src="/images/featured-blog.webp"
                   alt="Best Escort Service in Gurgaon - Featured Guide"
+                  title="Best Escort Service in Gurgaon - Featured Guide"
                   fill
                   sizes="(max-width: 640px) calc(100vw - 32px), (max-width: 1024px) calc(100vw - 48px), 584px"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -172,10 +175,10 @@ export default function BlogPage() {
       </section>
 
       {/* Editorial Summary */}
-      <section className="py-16 bg-[#faf6f2] text-gray-800">
+      <section className="py-16 bg-[#FDFBF7] text-gray-800">
         <div className="container-luxury max-w-4xl">
           <div className="prose-luxury bg-white p-8 md:p-12 rounded-2xl border border-gold-200/60 shadow-sm">
-            <h2 className="text-3xl font-bold text-[#1a1a2e] mb-6 font-serif">
+            <h2 className="text-3xl font-bold text-[#0F172A] mb-6 font-serif">
               About the ALINA VIP Editorial Desk
             </h2>
             <div className="space-y-4 text-gray-700 text-lg leading-relaxed">
