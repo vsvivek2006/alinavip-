@@ -85,7 +85,7 @@ export const generalFaqs = [
   },
   {
     question: 'Do you offer cash on delivery (COD) payment for escort service in Gurgaon?',
-    answer: 'Yes, we support cash on delivery directly upon your companion’s arrival. We believe in transparent, honest service without deceptive advance fee demands. You may inspect and confirm your companion before settling the agreed companionship fee in person.',
+    answer: 'Yes, we support cash on delivery directly upon your companion’s arrival. We believe in transparent, honest service without deceptive advance fee demands. You may inspect and confirm your companion before settling the agreed service fee in person.',
   },
   {
     question: 'How does ALINA VIP protect client confidentiality and personal data?',
