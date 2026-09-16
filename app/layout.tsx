@@ -27,6 +27,7 @@ export const metadata: Metadata = {
   },
   description:
     'ALINA VIP offers premium luxury escort service in Gurgaon. Verified profiles, VIP escorts, Russian call girls, 100% discreet hotel & residence outcalls. Available 24/7.',
+  keywords: siteConfig.keywords,
   applicationName: 'ALINA VIP',
   authors: [{ name: 'ALINA VIP' }],
   generator: 'Next.js',

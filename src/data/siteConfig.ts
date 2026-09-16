@@ -18,10 +18,38 @@ export const siteConfig = {
     'escorts service in gurugaon',
     'gurgaon escort service',
     'gurugram escort service',
-    'vip escort service in gurgaon',
+    'vip escorts service in gurgaon',
+    'luxury escort service gurgaon',
     'call girls in gurgaon',
-    'russian escorts gurgaon',
+    'call girls in gurugram',
+    'call girls gurgaon',
+    'call girls gurugram',
+    'escorts in gurgaon',
+    'escorts in gurugram',
+    'escort agency gurgaon',
+    'escort agency in gurugram',
+    'hotel outcall escort service gurgaon',
+    'russian escort service in gurgaon',
+    'russian call girls in gurgaon',
+    'russian escorts in gurugram',
+    'vip call girls in gurgaon',
+    'vip call girls in gurugram',
     'independent escorts in gurgaon',
+    'independent call girls in gurugram',
+    'cash on delivery escort service gurgaon',
+    'cod call girls in gurgaon',
+    'dlf phase 1 escort service',
+    'dlf phase 2 escorts service',
+    'dlf phase 3 escort service',
+    'cyber city call girls',
+    'cyber city escort service',
+    'golf course road escorts',
+    'golf course extension road call girls',
+    'sohna road escort service',
+    'mg road call girls gurgaon',
+    '5 star hotel escorts gurgaon',
+    'leela ambience gurgaon escorts',
+    'oberoi gurgaon call girls',
   ],
   socialLinks: [
     { name: 'Instagram', url: 'https://instagram.com/alinavip', icon: 'Instagram' },
@@ -37,7 +65,7 @@ export const generalFaqs = [
   },
   {
     question: 'How to book an escort service in Gurgaon?',
-    answer: 'Booking an escort service in Gurgaon with ALINA VIP is simple and 100% confidential. Call our booking desk directly at +91-9996265679 or WhatsApp us with your preferred location, timing, and companion preferences. Our concierge confirms availability within minutes and coordinates discreet outcall dispatch to your luxury hotel or residence.',
+    answer: 'Booking an escort service in Gurgaon with ALINA VIP is simple and 100% confidential. Call our booking desk directly at +91-9996265679 or WhatsApp us with your preferred location, timing, and escort preferences. Our concierge confirms availability within minutes and coordinates discreet outcall dispatch to your luxury hotel or residence.',
   },
   {
     question: 'Are all profiles verified?',
@@ -45,7 +73,7 @@ export const generalFaqs = [
   },
   {
     question: 'Is private escort booking in Gurgaon discreet and confidential?',
-    answer: 'Yes, absolute discretion and confidentiality are guaranteed. All client details are strictly protected with zero digital footprint. Our verified companions arrive in unmarked executive vehicles and observe the strictest privacy standards for five-star hotel suites and private residences across Gurgaon.',
+    answer: 'Yes, absolute discretion and confidentiality are guaranteed. All client details are strictly protected with zero digital footprint. Our verified VIP escorts arrive in unmarked executive vehicles and observe the strictest privacy standards for five-star hotel suites and private residences across Gurgaon.',
   },
   {
     question: 'What areas of Gurgaon does your escort service cover?',
@@ -81,11 +109,11 @@ export const generalFaqs = [
   },
   {
     question: 'What is the outcall procedure for five-star luxury hotels in Gurgaon?',
-    answer: 'Our outcall escort service regularly dispatches to premier 5-star hotels including The Oberoi, The Trident, The Leela Ambience, Grand Hyatt Gurgaon, and ITC Grand Bharat. When booking, provide your hotel name and room or suite number. Our companions arrive dressed in elegant, understated attire that blends seamlessly with upscale hotel environments, maintaining absolute discretion upon entry.',
+    answer: 'Our outcall escort service regularly dispatches to premier 5-star hotels including The Oberoi, The Trident, The Leela Ambience, Grand Hyatt Gurgaon, and ITC Grand Bharat. When booking, provide your hotel name and room or suite number. Our VIP escorts arrive dressed in elegant, understated attire that blends seamlessly with upscale hotel environments, maintaining absolute discretion upon entry.',
   },
   {
     question: 'Do you offer cash on delivery (COD) payment for escort service in Gurgaon?',
-    answer: 'Yes, we support cash on delivery directly upon your companion’s arrival. We believe in transparent, honest service without deceptive advance fee demands. You may inspect and confirm your companion before settling the agreed service fee in person.',
+    answer: 'Yes, we support cash on delivery directly upon your escort’s arrival. We believe in transparent, honest service without deceptive advance fee demands. You may inspect and confirm your escort before settling the agreed service fee in person.',
   },
   {
     question: 'How does ALINA VIP protect client confidentiality and personal data?',
@@ -93,7 +121,7 @@ export const generalFaqs = [
   },
   {
     question: 'How do I ensure I am booking verified call girls and avoid common scams in Gurgaon?',
-    answer: 'Always book through an established agency like ALINA VIP that provides authentic, untouched profile photographs and explicit outcall terms. Avoid operators demanding untraceable upfront digital transfers before meeting. With ALINA VIP, our companions are verified in person, guaranteeing that the companion who arrives matches the profile you selected.',
+    answer: 'Always book through an established agency like ALINA VIP that provides authentic, untouched profile photographs and explicit outcall terms. Avoid operators demanding untraceable upfront digital transfers before meeting. With ALINA VIP, our VIP escorts are verified in person, guaranteeing that the escort who arrives matches the profile you selected.',
   },
 ];
 
