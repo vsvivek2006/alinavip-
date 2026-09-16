@@ -4,6 +4,10 @@ import { TermsPage } from '@/components/LegalPages';
 export const metadata: Metadata = {
   title: 'Terms & Conditions | ALINA VIP Escort Service',
   description: 'Terms and conditions governing the booking and provision of luxury escort services by ALINA VIP.',
+  keywords: [
+    ...siteConfig.keywords.slice(0, 10),
+    'terms of service, booking policies, client agreement',
+  ],
   alternates: { canonical: 'https://escort.alinavip.com/terms' },
   robots: {
     index: false,
