@@ -28,6 +28,14 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
+        hostname: 'escort.alinavip.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'alinavip.com',
+      },
+      {
+        protocol: 'https',
         hostname: 'www.roshnikhanna.in',
       },
     ],

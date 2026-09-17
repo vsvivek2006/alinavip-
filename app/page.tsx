@@ -43,7 +43,7 @@ export default function HomePage() {
       'ALINA VIP Escort Service Gurugram',
     ],
     url: siteConfig.url,
-    phone: siteConfig.phone,
+    telephone: siteConfig.phone,
     email: siteConfig.email,
     areaServed: ['Gurgaon', 'Gurugram', 'Delhi NCR', 'DLF Phase 1-5', 'Cyber City', 'Golf Course Road'],
     knowsAbout: [

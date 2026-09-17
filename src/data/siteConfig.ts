@@ -5,8 +5,8 @@
   whatsapp: '919996265679',
   email: 'contact@alinavip.com',
   address: 'DLF Phase 3, Golf Course Road, Gurgaon, Haryana 122002, India',
-  url: 'https://escorts.alinavip.com',
-  domain: 'escorts.alinavip.com',
+  url: 'https://escort.alinavip.com',
+  domain: 'escort.alinavip.com',
   tagline: 'Premium Luxury Escort Service',
   description: 'ALINA VIP offers premium luxury escort services in Gurgaon with verified profiles, discreet service, and elite call girls for discerning gentlemen.',
   keywords: [
@@ -77,7 +77,7 @@ export const generalFaqs = [
   },
   {
     question: 'What areas of Gurgaon does your escort service cover?',
-    answer: 'Our Gurgaon escort service covers all prime areas including DLF Phases 1â€“5, Cyber City, Cyber Hub, Golf Course Road, Sohna Road, MG Road, Sushant Lok, and Sectors 14, 29, 43, 44, 49, 56, and 57, as well as Aerocity and South Delhi.',
+    answer: 'Our Gurgaon escort service covers all prime areas including DLF Phases 1–5, Cyber City, Cyber Hub, Golf Course Road, Sohna Road, MG Road, Sushant Lok, and Sectors 14, 29, 43, 44, 49, 56, and 57, as well as Aerocity and South Delhi.',
   },
   {
     question: 'What are your operating hours?',
@@ -113,7 +113,7 @@ export const generalFaqs = [
   },
   {
     question: 'Do you offer cash on delivery (COD) payment for escort service in Gurgaon?',
-    answer: 'Yes, we support cash on delivery directly upon your escortâ€™s arrival. We believe in transparent, honest service without deceptive advance fee demands. You may inspect and confirm your escort before settling the agreed service fee in person.',
+    answer: 'Yes, we support cash on delivery directly upon your escort\'s arrival. We believe in transparent, honest service without deceptive advance fee demands. You may inspect and confirm your escort before settling the agreed service fee in person.',
   },
   {
     question: 'How does ALINA VIP protect client confidentiality and personal data?',
@@ -128,7 +128,8 @@ export const generalFaqs = [
 export function getAlternateLanguages(path: string = '') {
   const cleanPath = path ? (path.startsWith('/') ? path : `/${path}`) : '';
   return {
-    'en': `https://escorts.alinavip.com${cleanPath}`,
+    'en': `https://escort.alinavip.com${cleanPath}`,
   };
 }
+
 

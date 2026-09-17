@@ -3,10 +3,10 @@ Allow: /
 Disallow: /api/
 Crawl-delay: 1
 
-Sitemap: https://escorts.alinavip.com/sitemap.xml
-Sitemap: https://escorts.alinavip.com/sitemap-index.xml
-Sitemap: https://escorts.alinavip.com/sitemap-locations.xml
-Sitemap: https://escorts.alinavip.com/sitemap-categories.xml
-Sitemap: https://escorts.alinavip.com/sitemap-blogs.xml
-Sitemap: https://escorts.alinavip.com/sitemap-pages.xml
-Sitemap: https://escorts.alinavip.com/sitemap-escorts.xml
+Sitemap: https://escort.alinavip.com/sitemap.xml
+Sitemap: https://escort.alinavip.com/sitemap-index.xml
+Sitemap: https://escort.alinavip.com/sitemap-locations.xml
+Sitemap: https://escort.alinavip.com/sitemap-categories.xml
+Sitemap: https://escort.alinavip.com/sitemap-blogs.xml
+Sitemap: https://escort.alinavip.com/sitemap-pages.xml
+Sitemap: https://escort.alinavip.com/sitemap-escorts.xml

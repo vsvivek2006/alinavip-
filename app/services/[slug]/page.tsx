@@ -75,11 +75,35 @@ export async function generateMetadata({
     };
   }
 
+  const title = `${item.title.replace(/Roshni\s*Khanna/gi, siteConfig.name)} | ${siteConfig.name}`;
+  const description = `Discover premium ${item.h1} in Gurgaon. 100% real verified call girls, 20-30 min hotel arrival, cash on delivery with ALINA VIP.`;
+
   return {
-    title: `${item.title.replace(/Roshni\s*Khanna/gi, siteConfig.name)} | ${siteConfig.name}`,
-    description: `Discover premium ${item.h1} in Gurgaon. 100% real verified call girls, 20-30 min hotel arrival, cash on delivery with ALINA VIP.`,
+    title,
+    description,
     alternates: {
       canonical: `${siteConfig.url}/services/${slug}`,
+    },
+    openGraph: {
+      title,
+      description,
+      url: `${siteConfig.url}/services/${slug}`,
+      type: 'website',
+      siteName: siteConfig.name,
+      images: [
+        {
+          url: `${siteConfig.url}/og-image.jpg`,
+          width: 1200,
+          height: 630,
+          alt: `${item.h1} | ALINA VIP`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [`${siteConfig.url}/og-image.jpg`],
     },
   };
 }
@@ -101,31 +125,89 @@ export default async function ServiceDetailPage({
   const availableModels = escortModels.slice(0, 6);
 
   // Filter out empty or duplicate nav sections
-  const validSections = item.sections.filter((s) => {
-    if (!s.title && s.paragraphs.length === 0) return false;
-    const t = s.title.toLowerCase();
-    if (t.includes('main menu') || t.includes('categories') || t.includes('gurgaon locations') || t.includes('contact details') || t.includes('age verification') || t.includes('feeling naughty?')) {
-      return false;
-    }
-    return true;
-  });
+  const validSections = item.sections.filter(
+    (sec) =>
+      sec.title !== 'Select Your Area in Gurgaon' &&
+      sec.title !== 'Select Your Preferred Hotel' &&
+      sec.title !== 'Categories of Escorts' &&
+      sec.title !== 'Escort Service in Gurgaon by Roshni Khanna' &&
+      sec.paragraphs.length > 0
+  );
+
+  const breadcrumbItems = [
+    { label: 'Home', href: '/' },
+    { label: 'Services', href: '/services' },
+    { label: item.h1 },
+  ];
+
+  const serviceSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: breadcrumbItems.map((b, idx) => ({
+          '@type': 'ListItem',
+          position: idx + 1,
+          name: b.label,
+          item: b.href ? `${siteConfig.url}${b.href}` : `${siteConfig.url}/services/${slug}`,
+        })),
+      },
+      {
+        '@type': 'Service',
+        name: item.h1,
+        description: `Premium ${item.h1} in Gurgaon with 100% verified female escorts and VIP call girls.`,
+        provider: {
+          '@type': 'Organization',
+          name: siteConfig.name,
+          url: siteConfig.url,
+        },
+        areaServed: {
+          '@type': 'City',
+          name: 'Gurgaon',
+        },
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog',
+          name: 'Escort Service Packages',
+          itemListElement: [
+            {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: '1-2 Hours Outcall',
+              },
+              price: '15000',
+              priceCurrency: 'INR',
+            },
+            {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: 'Full Night Booking',
+              },
+              price: '30000',
+              priceCurrency: 'INR',
+            },
+          ],
+        },
+      },
+    ],
+  };
 
   return (
     <div className="min-h-screen bg-[#FFFDF6] text-[#333333]">
-      {/* 1. Hero Header Banner */}
-      <div className="bg-[#671725] text-white py-12 px-4 sm:px-6 lg:px-8 border-b-4 border-[#FFD700] shadow-md">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+
+      {/* 1. Header Hero Banner */}
+      <div className="bg-[#671725] text-white py-12 px-4 sm:px-6 lg:px-8 border-b border-rose-900/40">
         <div className="max-w-6xl mx-auto">
           <div className="mb-4">
-            <Breadcrumb
-              items={[
-                { label: 'Home', href: '/' },
-                { label: 'Services', href: '/services' },
-                { label: item.h1 },
-              ]}
-            />
+            <Breadcrumb items={breadcrumbItems} />
           </div>
 
-          <span className="inline-block px-4 py-1 rounded-full bg-white/10 text-[#FFD700] text-xs font-semibold uppercase tracking-wider mb-3">
+          <span className="inline-block px-3 py-1 rounded-full bg-white/10 text-[#FFD700] text-xs font-semibold uppercase tracking-wider mb-3">
             ★ VIP Escort Services in Gurgaon
           </span>
 
@@ -212,7 +294,7 @@ export default async function ServiceDetailPage({
           </div>
         </div>
 
-        {/* All Authentic Scraped Sections from Roshni Khanna */}
+        {/* Service Details Sections */}
         <div className="space-y-8">
           {validSections.map((sec, idx) => (
             <article

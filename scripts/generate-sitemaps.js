@@ -9,7 +9,7 @@ const rootDir = path.resolve(__dirname, '..');
 const publicDir = path.join(rootDir, 'public');
 
 // 1. Read Base URL from siteConfig
-let baseUrl = 'https://alinavip.in';
+let baseUrl = 'https://escort.alinavip.com';
 try {
   const configContent = fs.readFileSync(path.join(rootDir, 'src/data/siteConfig.ts'), 'utf8');
   const urlMatch = configContent.match(/url:\s*'([^']+)'/);
