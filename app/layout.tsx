@@ -1,32 +1,33 @@
 import type { Metadata, Viewport } from 'next';
-import { Cormorant_Garamond, Jost } from 'next/font/google';
+import { Poppins, Playfair_Display } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
-import { siteConfig } from '@/data/siteConfig';
+import { siteConfig, getAlternateLanguages } from '@/data/siteConfig';
 
-const cormorant = Cormorant_Garamond({
+const playfair = Playfair_Display({
   subsets: ['latin'],
-  weight: ['400', '600'],
-  variable: '--font-cormorant',
+  weight: ['400', '700'],
+  variable: '--font-playfair',
   display: 'swap',
 });
 
-const jost = Jost({
+const poppins = Poppins({
   subsets: ['latin'],
-  variable: '--font-jost',
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
+  variable: '--font-poppins',
   display: 'swap',
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: 'ALINA VIP | Premium Luxury Escort Service in Gurgaon',
+    default: 'Escort Service in Gurgaon (Gurugram) | VIP Escorts Service ALINA VIP',
     template: '%s',
   },
   description:
-    'ALINA VIP offers premium luxury escort service in Gurgaon. Verified profiles, VIP escorts, Russian call girls, 100% discreet hotel & residence outcalls. Available 24/7.',
+    'ALINA VIP is the #1 escort service in Gurgaon (Gurugram). Book verified VIP call girls and elite escorts service with 20-30 min 5-star hotel outcall dispatch across DLF, Cyber City, and Golf Course Road.',
   keywords: siteConfig.keywords,
   applicationName: 'ALINA VIP',
   authors: [{ name: 'ALINA VIP' }],
@@ -47,28 +48,32 @@ export const metadata: Metadata = {
     apple: '/apple-touch-icon.png',
   },
   manifest: '/manifest.json',
+  alternates: {
+    canonical: siteConfig.url,
+    languages: getAlternateLanguages(''),
+  },
   openGraph: {
     type: 'website',
     locale: 'en_IN',
     url: siteConfig.url,
     siteName: 'ALINA VIP',
-    title: 'ALINA VIP | Premium Luxury Escort Service in Gurgaon',
+    title: 'Escort Service in Gurgaon (Gurugram) | VIP Escorts Service ALINA VIP',
     description:
-      'ALINA VIP offers premium luxury escort service in Gurgaon. Verified profiles, VIP escorts, Russian call girls, 100% discreet hotel & residence outcalls.',
+      'ALINA VIP is the #1 escort service in Gurgaon (Gurugram). Book verified VIP call girls and elite escorts service with 20-30 min 5-star hotel outcall dispatch across DLF, Cyber City, and Golf Course Road.',
     images: [
       {
         url: `${siteConfig.url}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: 'ALINA VIP Luxury Escort Service in Gurgaon',
+        alt: 'ALINA VIP Escort Service in Gurgaon Gurugram',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ALINA VIP | Premium Luxury Escort Service in Gurgaon',
+    title: 'Escort Service in Gurgaon (Gurugram) | VIP Escorts Service ALINA VIP',
     description:
-      'ALINA VIP offers premium luxury escort service in Gurgaon. Verified profiles, VIP escorts, Russian call girls, 100% discreet hotel & residence outcalls.',
+      'ALINA VIP is the #1 escort service in Gurgaon (Gurugram). Book verified VIP call girls and elite escorts service with 20-30 min 5-star hotel outcall dispatch across DLF, Cyber City, and Golf Course Road.',
     images: [`${siteConfig.url}/og-image.jpg`],
   },
   verification: {
@@ -79,10 +84,52 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#0A0A0B',
+  themeColor: '#FFFFFF',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
+};
+
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': `${siteConfig.url}/#business`,
+  name: siteConfig.name,
+  url: siteConfig.url,
+  telephone: siteConfig.phone,
+  description: siteConfig.description,
+  image: `${siteConfig.url}/og-image.jpg`,
+  priceRange: '₹₹₹₹',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'DLF Phase 3, Golf Course Road',
+    addressLocality: 'Gurgaon',
+    addressRegion: 'Haryana',
+    postalCode: '122002',
+    addressCountry: 'IN',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 28.4908,
+    longitude: 77.0947,
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: [
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+        'Sunday',
+      ],
+      opens: '00:00',
+      closes: '23:59',
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -91,9 +138,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${jost.variable}`}>
-      <body className="bg-charcoal-900 text-charcoal-100 font-sans antialiased">
-        <div className="min-h-screen flex flex-col bg-luxury-gradient overflow-x-hidden">
+    <html lang="en" className={`${playfair.variable} ${poppins.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+      <body className="bg-white text-[#2d2d2d] font-sans antialiased">
+        <div className="min-h-screen flex flex-col bg-white overflow-x-hidden">
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />

@@ -1,5 +1,7 @@
+import { siteConfig } from '@/data/siteConfig';
 import type { Metadata } from 'next';
 import { TermsPage } from '@/components/LegalPages';
+import { getAlternateLanguages } from '@/data/siteConfig';
 
 export const metadata: Metadata = {
   title: 'Terms & Conditions | ALINA VIP Escort Service',
@@ -8,7 +10,10 @@ export const metadata: Metadata = {
     ...siteConfig.keywords.slice(0, 10),
     'terms of service, booking policies, client agreement',
   ],
-  alternates: { canonical: 'https://escort.alinavip.com/terms' },
+  alternates: {
+    canonical: 'https://escort.escort.alinavip.com/terms',
+    languages: getAlternateLanguages('/terms'),
+  },
   robots: {
     index: false,
     follow: true,

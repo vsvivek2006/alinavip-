@@ -1,5 +1,7 @@
+import { siteConfig } from '@/data/siteConfig';
 import type { Metadata } from 'next';
 import { PrivacyPolicyPage } from '@/components/LegalPages';
+import { getAlternateLanguages } from '@/data/siteConfig';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy | ALINA VIP Escort Service',
@@ -8,7 +10,10 @@ export const metadata: Metadata = {
     ...siteConfig.keywords.slice(0, 10),
     'privacy policy, discreet escort service, client confidentiality',
   ],
-  alternates: { canonical: 'https://escort.alinavip.com/privacy-policy' },
+  alternates: {
+    canonical: 'https://escort.escort.alinavip.com/privacy-policy',
+    languages: getAlternateLanguages('/privacy-policy'),
+  },
   robots: {
     index: false,
     follow: true,
