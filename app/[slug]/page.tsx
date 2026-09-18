@@ -7,8 +7,8 @@ import Breadcrumb from '@/components/Breadcrumb';
 import CTASection from '@/components/CTASection';
 import { siteConfig } from '@/data/siteConfig';
 import { escortModels } from '@/data/models';
-import pagesData from '@/data/roshni_pages.json';
-import postsData from '@/data/roshni_posts.json';
+import pagesData from '@/data/catalog_pages.json';
+import postsData from '@/data/catalog_posts.json';
 
 interface Section {
   heading: string;
@@ -26,26 +26,6 @@ interface ContentItem {
   type: string;
   sections: Section[];
   images?: { src: string; alt: string }[];
-}
-
-function cleanBrandText(text: string): string {
-  if (!text) return '';
-  return text
-    .replace(/roshnikhanna\.in/gi, 'escort.alinavip.com')
-    .replace(/alinavip\.in/gi, 'escort.alinavip.com')
-    .replace(/Roshni\s*Khanna/gi, siteConfig.name)
-    .replace(/RoshniKhanna/gi, siteConfig.name)
-    .replace(/Roshnikhanna/gi, siteConfig.name)
-    .replace(/At Roshni\b/gi, `At ${siteConfig.name}`)
-    .replace(/Roshni agency/gi, `${siteConfig.name} agency`)
-    .replace(/Roshni escorts/gi, `${siteConfig.name} escorts`)
-    .replace(/Roshni's/gi, `${siteConfig.name}'s`)
-    .replace(/\+?91[\s-]?9971819077/g, siteConfig.phone)
-    .replace(/9971819077/g, siteConfig.phoneDisplay)
-    .replace(/\+?91[\s-]?9811111111/g, siteConfig.phone)
-    .replace(/9811111111/g, siteConfig.phoneDisplay)
-    .replace(/\+?91[\s-]?9876543210/g, siteConfig.phone)
-    .replace(/9876543210/g, siteConfig.phoneDisplay);
 }
 
 const reserved = new Set([
@@ -89,35 +69,11 @@ export async function generateMetadata({
     };
   }
 
-  const title = cleanBrandText(item.title) || `${cleanBrandText(item.h1)} – ALINA VIP`;
-  const description = cleanBrandText(item.metaDescription) || `${cleanBrandText(item.h1)} – 24/7 Verified In-Call & Out-Call Escort Service in Gurgaon with ALINA VIP.`;
-
   return {
-    title,
-    description,
+    title: item.title,
+    description: item.metaDescription || `${item.h1} – 24/7 Verified In-Call & Out-Call Escort Service in Gurgaon with ALINA VIP.`,
     alternates: {
       canonical: `${siteConfig.url}/${slug}`,
-    },
-    openGraph: {
-      title,
-      description,
-      url: `${siteConfig.url}/${slug}`,
-      type: item.type === 'post' ? 'article' : 'website',
-      siteName: siteConfig.name,
-      images: [
-        {
-          url: `${siteConfig.url}/og-image.jpg`,
-          width: 1200,
-          height: 630,
-          alt: `${cleanBrandText(item.h1)} | ALINA VIP`,
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
-      images: [`${siteConfig.url}/og-image.jpg`],
     },
   };
 }
@@ -136,75 +92,20 @@ export default async function DynamicSlugPage({
 
   const isPost = item.type === 'post';
   const availableModels = escortModels.slice(0, 4);
-  const cleanH1 = cleanBrandText(item.h1);
-
-  const breadcrumbItems = [
-    { label: 'Home', href: '/' },
-    isPost ? { label: 'Blog', href: '/blog' } : { label: 'Escorts', href: '/escorts' },
-    { label: cleanH1 },
-  ];
-
-  const breadcrumbSchema = {
-    '@type': 'BreadcrumbList',
-    itemListElement: breadcrumbItems.map((b, idx) => ({
-      '@type': 'ListItem',
-      position: idx + 1,
-      name: b.label,
-      item: b.href ? `${siteConfig.url}${b.href}` : `${siteConfig.url}/${slug}`,
-    })),
-  };
-
-  const articleOrWebpageSchema = isPost
-    ? {
-        '@type': 'BlogPosting',
-        headline: cleanH1,
-        description: cleanBrandText(item.metaDescription),
-        url: `${siteConfig.url}/${slug}`,
-        author: {
-          '@type': 'Organization',
-          name: siteConfig.name,
-          url: siteConfig.url,
-        },
-        publisher: {
-          '@type': 'Organization',
-          name: siteConfig.name,
-          url: siteConfig.url,
-          logo: {
-            '@type': 'ImageObject',
-            url: `${siteConfig.url}/og-image.jpg`,
-          },
-        },
-        image: `${siteConfig.url}/og-image.jpg`,
-      }
-    : {
-        '@type': 'WebPage',
-        name: cleanH1,
-        description: cleanBrandText(item.metaDescription),
-        url: `${siteConfig.url}/${slug}`,
-        isPartOf: {
-          '@type': 'WebSite',
-          name: siteConfig.name,
-          url: siteConfig.url,
-        },
-      };
-
-  const pageSchema = {
-    '@context': 'https://schema.org',
-    '@graph': [breadcrumbSchema, articleOrWebpageSchema],
-  };
 
   return (
     <div className="min-h-screen bg-[#FFFDF6] text-[#333333]">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
-      />
-
       {/* 1. Header Hero Banner */}
       <div className="bg-[#671725] text-white py-12 px-4 sm:px-6 lg:px-8 border-b border-rose-900/40">
         <div className="max-w-6xl mx-auto">
           <div className="mb-4">
-            <Breadcrumb items={breadcrumbItems} />
+            <Breadcrumb
+              items={[
+                { label: 'Home', href: '/' },
+                isPost ? { label: 'Blog', href: '/blog' } : { label: 'Escorts', href: '/escorts' },
+                { label: item.h1 },
+              ]}
+            />
           </div>
 
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-[#FFD700] text-xs font-semibold uppercase tracking-wider mb-3">
@@ -220,7 +121,7 @@ export default async function DynamicSlugPage({
           </div>
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
-            {cleanH1}
+            {item.h1}
           </h1>
 
           <p className="mt-3 text-sm sm:text-base text-rose-100/90 font-light max-w-3xl leading-relaxed">
@@ -231,7 +132,7 @@ export default async function DynamicSlugPage({
 
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <a
-              href={`https://wa.me/${siteConfig.whatsapp}?text=Hi%20ALINA%20VIP,%20I%20am%20inquiring%20about%20${encodeURIComponent(cleanH1)}`}
+              href={`https://wa.me/${siteConfig.whatsapp}?text=Hi%20ALINA%20VIP,%20I%20am%20inquiring%20about%20${encodeURIComponent(item.h1)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-2.5 bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#22bf5b] hover:to-[#0f7569] text-white shadow-md shadow-emerald-900/20 hover:shadow-lg hover:shadow-emerald-900/30 hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-300 text-xs sm:text-sm font-bold rounded-xl flex items-center gap-2"
@@ -255,47 +156,44 @@ export default async function DynamicSlugPage({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           {/* Main Article Body (8 cols) */}
           <div className="lg:col-span-8 space-y-8">
-            {item.sections.map((sec, idx) => {
-              const cleanHeading = cleanBrandText(sec.heading);
-              return (
-                <div
-                  key={idx}
-                  className="bg-white p-6 sm:p-8 rounded-xl border border-gray-100 shadow-sm space-y-4"
-                >
-                  {cleanHeading && (
-                    <h2 className="text-xl sm:text-2xl font-bold text-[#111827] border-b border-gray-100 pb-3">
-                      {cleanHeading}
-                    </h2>
-                  )}
+            {item.sections.map((sec, idx) => (
+              <div
+                key={idx}
+                className="bg-white p-6 sm:p-8 rounded-xl border border-gray-100 shadow-sm space-y-4"
+              >
+                {sec.heading && (
+                  <h2 className="text-xl sm:text-2xl font-bold text-[#111827] border-b border-gray-100 pb-3">
+                    {sec.heading}
+                  </h2>
+                )}
 
-                  {sec.paragraphs.map((p, pIdx) => (
-                    <p
-                      key={pIdx}
-                      className="text-gray-700 text-sm sm:text-base leading-relaxed"
-                    >
-                      {cleanBrandText(p)}
-                    </p>
-                  ))}
+                {sec.paragraphs.map((p, pIdx) => (
+                  <p
+                    key={pIdx}
+                    className="text-gray-700 text-sm sm:text-base leading-relaxed"
+                  >
+                    {p}
+                  </p>
+                ))}
 
-                  {sec.listItems && sec.listItems.length > 0 && (
-                    <ul className="space-y-2 pt-2">
-                      {sec.listItems.map((li, lIdx) => (
-                        <li
-                          key={lIdx}
-                          className="flex items-start gap-2.5 text-sm sm:text-base text-gray-700"
-                        >
-                          <CheckCircle
-                            size={17}
-                            className="text-[#671725] shrink-0 mt-0.5"
-                          />
-                          <span>{cleanBrandText(li)}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              );
-            })}
+                {sec.listItems.length > 0 && (
+                  <ul className="space-y-2 pt-2">
+                    {sec.listItems.map((li, lIdx) => (
+                      <li
+                        key={lIdx}
+                        className="flex items-start gap-2.5 text-sm sm:text-base text-gray-700"
+                      >
+                        <CheckCircle
+                          size={17}
+                          className="text-[#671725] shrink-0 mt-0.5"
+                        />
+                        <span>{li}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
 
             {/* Rates Table (if location/service page) */}
             {!isPost && (
@@ -376,7 +274,7 @@ export default async function DynamicSlugPage({
                     <div className="relative w-14 h-16 rounded overflow-hidden bg-gray-100 shrink-0">
                       <Image
                         src={m.image}
-                        alt={`${m.name} – Luxury VIP Escort in Gurgaon`}
+                        alt={m.name}
                         fill
                         className="object-cover group-hover:scale-105 transition-transform"
                       />
