@@ -1,4 +1,5 @@
 import { blogPosts as fallbackPosts, BlogPost } from '@/data/blogs';
+import { getAssetUrl } from '@/lib/assets';
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL?.replace(/\/$/, '');
 const ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
@@ -41,7 +42,7 @@ function mapRowToBlogPost(row: SupabasePostRow): BlogPost {
     excerpt: row.excerpt || '',
     date: row.published_at ? row.published_at.split('T')[0] : '2026-01-01',
     readTime: `${Math.max(3, Math.ceil(contentParagraphs.join(' ').length / 800))} min read`,
-    image: row.cover_image || '/images/assets/Benefits_of_Booking_Through_a_Professional_Escort_.jpg',
+    image: getAssetUrl(row.cover_image || '/images/assets/Benefits_of_Booking_Through_a_Professional_Escort_.jpg'),
     author: row.author || 'ALINA VIP India',
     tags: tagList,
     content: contentParagraphs,
