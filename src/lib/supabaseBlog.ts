@@ -59,31 +59,8 @@ export async function getPublishedBlogPosts(): Promise<BlogPost[]> {
   }
 
   try {
-    // 1. Fetch site_id by slug
-    const siteRes = await fetch(
-      `${SUPABASE_URL}/rest/v1/sites?slug=eq.${encodeURIComponent(SITE_SLUG)}&select=id`,
-      {
-        headers: {
-          apikey: ANON_KEY,
-          Authorization: `Bearer ${ANON_KEY}`,
-        },
-        next: { revalidate: 86400, tags: ['blog-posts'] },
-      }
-    );
-
-    if (!siteRes.ok) {
-      return fallbackPosts;
-    }
-
-    const sites = await siteRes.json();
-    if (!sites || sites.length === 0) {
-      return fallbackPosts;
-    }
-    const siteId = sites[0].id;
-
-    // 2. Fetch published posts for site
     const postsRes = await fetch(
-      `${SUPABASE_URL}/rest/v1/posts?site_id=eq.${siteId}&status=eq.published&order=published_at.desc&select=*`,
+      `${SUPABASE_URL}/rest/v1/posts?sites.slug=eq.${encodeURIComponent(SITE_SLUG)}&status=eq.published&order=published_at.desc&select=*,sites!inner(slug)`,
       {
         headers: {
           apikey: ANON_KEY,
@@ -110,7 +87,7 @@ export async function getPublishedBlogPosts(): Promise<BlogPost[]> {
 }
 
 /**
- * Fetch a single published post by slug
+ * Fetch a single published post by slug with site isolation
  */
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
   if (!SUPABASE_URL || !ANON_KEY) {
@@ -119,7 +96,7 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
 
   try {
     const postRes = await fetch(
-      `${SUPABASE_URL}/rest/v1/posts?slug=eq.${encodeURIComponent(slug)}&status=eq.published&select=*`,
+      `${SUPABASE_URL}/rest/v1/posts?slug=eq.${encodeURIComponent(slug)}&sites.slug=eq.${encodeURIComponent(SITE_SLUG)}&status=eq.published&select=*,sites!inner(slug)`,
       {
         headers: {
           apikey: ANON_KEY,

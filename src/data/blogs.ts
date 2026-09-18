@@ -9,7 +9,7 @@ export interface BlogPost {
   views?: string;
   author?: string;
   tags?: string[];
-  content: string[];
+  content: string[] | string;
 }
 
 export const blogCategories = [
