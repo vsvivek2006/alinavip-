@@ -1,11 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Calendar, Clock, Eye, User, ArrowRight, Search, X } from 'lucide-react';
 import { BlogPost } from '@/data/blogs';
+import { getAssetUrl } from '@/lib/assets';
 
 interface BlogFilterProps {
   posts: BlogPost[];
@@ -13,18 +13,17 @@ interface BlogFilterProps {
 }
 
 export default function BlogFilter({ posts, categories }: BlogFilterProps) {
-  const searchParams = useSearchParams();
-  const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || '');
-  const [activeCategory, setActiveCategory] = useState<string | null>(
-    searchParams.get('category') || null
-  );
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
   useEffect(() => {
-    const q = searchParams.get('search') || '';
-    const cat = searchParams.get('category') || null;
-    setSearchQuery(q);
-    setActiveCategory(cat);
-  }, [searchParams]);
+    if (typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get('search') || '';
+    const cat = params.get('category') || null;
+    if (q) setSearchQuery(q);
+    if (cat) setActiveCategory(cat);
+  }, []);
 
   const updateUrl = (query: string, category: string | null) => {
     const params = new URLSearchParams();
@@ -169,7 +168,7 @@ export default function BlogFilter({ posts, categories }: BlogFilterProps) {
             <Link href={`/blog/${post.slug}`} className="block">
               <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900">
                 <Image
-                  src={post.image || `/images/blog/${post.slug}.webp`}
+                  src={getAssetUrl(post.image || `/images/blog/${post.slug}.webp`)}
                   alt={`${post.title} - Escort Service in Gurgaon | Call Girls`}
                   title={`${post.title} - Escort Service in Gurgaon | Call Girls`}
                   fill
