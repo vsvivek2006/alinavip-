@@ -1,18 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
+import { invalidateBlogCache } from '@/lib/supabaseBlog';
 
 /**
  * On-Demand ISR Revalidation Endpoint
- * 
- * Called by Central AI-Blog Admin Panel on post publish/update.
- * Purges Next.js cache instantly without requiring a full site rebuild.
+ * Triggered by central publisher to bust Next.js route cache instantly.
  */
 export async function POST(req: NextRequest) {
   const secret = req.nextUrl.searchParams.get('secret');
   const path = req.nextUrl.searchParams.get('path');
   const slug = req.nextUrl.searchParams.get('slug');
 
-  // Verify authorization secret
   const configuredSecret = process.env.REVALIDATE_SECRET;
   if (!configuredSecret || secret !== configuredSecret) {
     return NextResponse.json(
@@ -22,14 +20,14 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    // Revalidate main blog directory
+    invalidateBlogCache(slug || undefined);
+
     if (path) {
       revalidatePath(path);
     } else {
       revalidatePath('/blog');
     }
 
-    // Revalidate individual blog post if specified
     if (slug) {
       revalidatePath(`/blog/${slug}`);
     }
